@@ -22,7 +22,7 @@ pipeline {
       steps {
         script {
           git branch: 'main',
-              url: 'https://github.com/Mark-1305/gitopops-argocd.git'
+          url: 'https://github.com/Mark-1305/gitopops-argocd.git'
         }
       }
     }
@@ -42,6 +42,15 @@ pipeline {
             docker_image.push("${IMAGE_TAG}")
             docker_image.push("latest")
           }
+        }
+      }
+    }
+
+    stage('Delete Docker images') {
+      steps {
+        script {
+          sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+          sh "docker rmi ${IMAGE_NAME}:latest"
         }
       }
     }
