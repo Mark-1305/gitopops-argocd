@@ -1,10 +1,10 @@
-pipeline{
+pipeline {
   agent any
 
-  stages{
-    stage(Clenup workspace){
-      steps{
-        script{
+  stages {
+    stage('Cleanup workspace') {
+      steps {
+        script {
           cleanWs()
         }
       }
