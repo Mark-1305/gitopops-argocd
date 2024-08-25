@@ -20,7 +20,6 @@ pipeline {
     }
   }
 }
-NU"
 
   stages {
     stage('Cleanup workspace') {
@@ -31,4 +30,12 @@ NU"
       }
     }
   }
-}
+
+  stage(checkout SCM)
+  steps{
+    script{
+      git branch: 'main',
+      url: 'https://github.com/Mark-1305/gitopops-argocd.git'
+    }
+  }
+
